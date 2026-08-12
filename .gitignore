@@ -1,0 +1,49 @@
+# Backend (Spring Boot)
+target/
+build/
+out/
+.gradle/
+.mvn/
+!gradle/wrapper/gradle-wrapper.jar
+.idea/
+*.iml
+.vscode/
+*.log
+*.jar
+*.war
+*.class
+.env
+application-*.yml
+application-*.properties
+
+# Frontend
+node_modules/
+.expo/
+.expo-shared/
+web-build/
+dist/
+android/
+ios/
+*.keystore
+*.apk
+*.aab
+.env*
+
+# System
+.DS_Store
+Thumbs.db
+.DS_Store
+
+### CourseFlow Data ###
+Documents/*
+!Documents/.gitkeep
+
+### Secrets / Private Keys ###
+*.key
+
+### Team Personal Information ###
+sdmay_website/www/profile_pictures/*
+sdmay_website/www/weekly_reports/*
+
+### Scraped / Generated Data ###
+scripts/*.csv

@@ -1,0 +1,98 @@
+# This file is a template, and might need editing before it works on your project.
+# This is a sample GitLab CI/CD configuration file that should run without any modifications.
+# It demonstrates a basic 3 stage CI/CD pipeline. Instead of real tests or scripts,
+# it uses echo commands to simulate the pipeline execution.
+#
+# A pipeline is composed of independent jobs that run scripts, grouped into stages.
+# Stages run in sequential order, but jobs within stages run in parallel.
+#
+# For more information, see: https://docs.gitlab.com/ee/ci/yaml/#stages
+#
+# You can copy and paste this template into a new `.gitlab-ci.yml` file.
+# You should not add this template to an existing `.gitlab-ci.yml` file by using the `include:` keyword.
+#
+# To contribute improvements to CI/CD templates, please follow the Development guide at:
+# https://docs.gitlab.com/development/cicd/templates/
+# This specific template is located at:
+# https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Getting-Started.gitlab-ci.yml
+
+stages:          # List of stages for jobs, and their order of execution
+  - build
+  - deploy
+
+variables:
+  SSH_USER: "deploy"
+  SSH_HOST: "10.24.108.40"
+  SSH_PORT: "22"
+  FRONTEND_TARGET_DIR: "/var/www/html"
+  BACKEND_TARGET_DIR: "/opt/courseflow"
+
+build_web:
+  stage: build
+  image: node:18
+  script:
+    - cd Frontend/course-flow-ts
+    - npm ci
+    - export EXPO_PUBLIC_API_ROOT_URL=https://sdmay26-48.ece.iastate.edu
+    - export EXPO_PUBLIC_API_URL=https://sdmay26-48.ece.iastate.edu/api
+    - export EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID=907276194504-ggddfq06rhkjd5ioago3ojiuuj2gctqu.apps.googleusercontent.com
+
+    - npx expo export
+  artifacts:
+    paths:
+      - Frontend/course-flow-ts/dist/
+    expire_in: 1 hour
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+
+#RAAAAAAAAAAAAHHHHHHH
+
+deploy_web:
+  stage: deploy
+  image: alpine:latest
+  dependencies:
+    - build_web
+  before_script:
+    - apk add --no-cache openssh-client
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan -p $SSH_PORT $SSH_HOST >> ~/.ssh/known_hosts
+  script:
+    - scp -P $SSH_PORT -r Frontend/course-flow-ts/dist/* $SSH_USER@$SSH_HOST:$FRONTEND_TARGET_DIR
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+
+# PLEASE
+
+build_backend:
+  stage: build
+  image: maven:3.9-eclipse-temurin-17
+  script:
+    - cd Backend
+    - mvn clean package -DskipTests
+  artifacts:
+    paths:
+      - Backend/target/*.jar
+    expire_in: 1 hour
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+
+deploy_backend:
+  stage: deploy
+  image: alpine:latest
+  dependencies:
+    - build_backend
+  before_script:
+    - apk add --no-cache openssh-client
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan -p $SSH_PORT $SSH_HOST >> ~/.ssh/known_hosts
+  script:
+    - scp -P $SSH_PORT Backend/target/*.jar $SSH_USER@$SSH_HOST:$BACKEND_TARGET_DIR/courseflow-backend.jar
+    - ssh -p $SSH_PORT $SSH_USER@$SSH_HOST "sudo systemctl restart courseflow-backend"
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'

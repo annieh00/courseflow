@@ -1,0 +1,53 @@
+# FIXME: Change info in this file
+#version: '3.8'
+#
+#services:
+#  backend:
+#    build: .
+#    container_name: courseflow-backend
+#    ports:
+#      - "8080:8080"
+#    depends_on:
+#      - postgres
+#      - neo4j
+#    environment:
+#      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/courseflow
+#      SPRING_DATASOURCE_USERNAME: courseflow
+#      SPRING_DATASOURCE_PASSWORD: password
+#      SPRING_NEO4J_URI: bolt://neo4j:7687
+#      SPRING_NEO4J_AUTHENTICATION_USERNAME: neo4j
+#      SPRING_NEO4J_AUTHENTICATION_PASSWORD: password
+#    networks:
+#      - courseflow-net
+#
+#  postgres:
+#    image: postgres:16
+#    container_name: courseflow-postgres
+#    environment:
+#      POSTGRES_USER: courseflow
+#      POSTGRES_PASSWORD: password
+#      POSTGRES_DB: courseflow
+#    volumes:
+#      - pgdata:/var/lib/postgresql/data
+#    networks:
+#      - courseflow-net
+#
+#  neo4j:
+#    image: neo4j:5
+#    container_name: courseflow-neo4j
+#    environment:
+#      NEO4J_AUTH: neo4j/password
+#    ports:
+#      - "7474:7474"
+#      - "7687:7687"
+#    volumes:
+#      - neo4jdata:/data
+#    networks:
+#      - courseflow-net
+#
+#networks:
+#  courseflow-net:
+#
+#volumes:
+#  pgdata:
+#  neo4jdata:

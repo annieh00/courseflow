@@ -1,0 +1,108 @@
+{
+  "info": {
+    "name": "CourseFlow Advising API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "List students",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/advising/students",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","advising","students"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get student",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/advising/:netid",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","advising",":netid"]
+        }
+      }
+    },
+    {
+      "name": "Get student plan",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/advising/:netid/plan",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","advising",":netid","plan"]
+        }
+      }
+    },
+    {
+      "name": "Get student notes",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/advising/:netid/notes",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","advising",":netid","notes"]
+        }
+      }
+    },
+    {
+      "name": "Get advisees",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/advising/:advisor/advisees",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","advising",":advisor","advisees"]
+        }
+      }
+    },
+    {
+      "name": "Add advisee",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"netid\": \"sjohnson\" }"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/advising/:advisor/advisees",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","advising",":advisor","advisees"]
+        }
+      }
+    },
+    {
+      "name": "Send message",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"subject\": \"Meeting\", \"body\": \"Can we meet next week?\" }"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/advising/:netid/message",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","advising",":netid","message"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080" }
+  ]
+}

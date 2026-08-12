@@ -1,0 +1,15 @@
+package com.courseflow.backend.Gamification;
+
+public enum BadgeKey {
+    THE_ARCHITECT,
+    THE_SPECIALIST,
+    LOOKING_SHARP,
+    GEN_ED_GLADIATOR,
+    HALFWAY_THERE,
+    THE_FINISH_LINE,
+    UPPERCLASSMAN_STATUS,
+    THE_MARATHONER,
+    PREREQUISITE_MASTER,
+    ON_THE_BOOKS,
+    ADVISORS_RADAR
+}

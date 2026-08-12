@@ -1,0 +1,89 @@
+{
+  "planName": "Computer Science B.S. Plan",
+  "years": [
+    {
+      "year": 1,
+      "fall": {
+        "semester": "Fall",
+        "courses": [
+          { "code": "CS101", "name": "Intro to Computer Science", "credits": 4, "taken": true },
+          { "code": "MATH101", "name": "Calculus I", "credits": 4, "taken": true },
+          { "code": "ENG101", "name": "English Composition", "credits": 4, "taken": true },
+          { "code": "HIST101", "name": "World History", "credits": 4, "taken": true }
+        ]
+      },
+      "spring": {
+        "semester": "Spring",
+        "courses": [
+          { "code": "CS102", "name": "Data Structures", "credits": 4, "taken": true },
+          { "code": "MATH102", "name": "Calculus II", "credits": 4, "taken": true },
+          { "code": "ENG102", "name": "Critical Writing", "credits": 4, "taken": true },
+          { "code": "PHYS101", "name": "Physics I", "credits": 4, "taken": true }
+        ]
+      }
+    },
+    {
+      "year": 2,
+      "fall": {
+        "semester": "Fall",
+        "courses": [
+          { "code": "CS201", "name": "Algorithms", "credits": 4, "taken": false },
+          { "code": "MATH201", "name": "Discrete Mathematics", "credits": 4, "taken": false },
+          { "code": "PHYS102", "name": "Physics II", "credits": 4, "taken": false },
+          { "code": "SOC101", "name": "Introduction to Sociology", "credits": 4, "taken": false }
+        ]
+      },
+      "spring": {
+        "semester": "Spring",
+        "courses": [
+          { "code": "CS202", "name": "Computer Architecture", "credits": 4, "taken": false },
+          { "code": "MATH202", "name": "Linear Algebra", "credits": 4, "taken": false },
+          { "code": "STAT201", "name": "Statistics I", "credits": 4, "taken": false },
+          { "code": "PHIL101", "name": "Introduction to Philosophy", "credits": 4, "taken": false }
+        ]
+      }
+    },
+    {
+      "year": 3,
+      "fall": {
+        "semester": "Fall",
+        "courses": [
+          { "code": "CS301", "name": "Operating Systems", "credits": 4, "taken": false },
+          { "code": "CS302", "name": "Software Engineering", "credits": 4, "taken": false },
+          { "code": "CS303", "name": "Database Systems", "credits": 4, "taken": false },
+          { "code": "ELECTIVE1", "name": "Free Elective", "credits": 4, "taken": false }
+        ]
+      },
+      "spring": {
+        "semester": "Spring",
+        "courses": [
+          { "code": "CS304", "name": "Networks and Communication", "credits": 4, "taken": false },
+          { "code": "CS305", "name": "Human-Computer Interaction", "credits": 4, "taken": false },
+          { "code": "CS306", "name": "Mobile App Development", "credits": 4, "taken": false },
+          { "code": "ELECTIVE2", "name": "Free Elective", "credits": 4, "taken": false }
+        ]
+      }
+    },
+    {
+      "year": 4,
+      "fall": {
+        "semester": "Fall",
+        "courses": [
+          { "code": "CS401", "name": "Artificial Intelligence", "credits": 4, "taken": false },
+          { "code": "CS402", "name": "Cybersecurity", "credits": 4, "taken": false },
+          { "code": "ELECTIVE3", "name": "Technical Elective", "credits": 4, "taken": false },
+          { "code": "CAPSTONE1", "name": "Senior Project I", "credits": 4, "taken": false }
+        ]
+      },
+      "spring": {
+        "semester": "Spring",
+        "courses": [
+          { "code": "CS403", "name": "Machine Learning", "credits": 4, "taken": false },
+          { "code": "CS404", "name": "Distributed Systems", "credits": 4, "taken": false },
+          { "code": "ELECTIVE4", "name": "Technical Elective", "credits": 4, "taken": false },
+          { "code": "CAPSTONE2", "name": "Senior Project II", "credits": 4, "taken": false }
+        ]
+      }
+    }
+  ]
+}
