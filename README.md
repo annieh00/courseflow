@@ -1,3 +1,4 @@
+view in code mode lol
 CourseFlow
 
 CourseFlow is a degree-planning application built for Iowa State University students to plan their coursework, visualize prerequisites, and build semester schedules. The project was developed as a senior design project using a React Native frontend and Spring Boot backend.
