@@ -77,6 +77,7 @@ The Spring Boot backend provides REST APIs and handles:
 PostgreSQL stores application data including courses, degree plans, user information, and scheduling data.
 
 ## Project Structure
+```text
 CourseFlow/
 ├── frontend/
 │   ├── app/ 
@@ -93,6 +94,7 @@ CourseFlow/
 │   └── ...
 │
 └── README.md
+```
 
 ## Getting Started
 ### Prerequisites
